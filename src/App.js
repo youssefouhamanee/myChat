@@ -1,7 +1,21 @@
-import React from "react";
-
+import React, { useEffect } from "react";
+import { useDispatch } from "react-redux";
+import { login, fetchListChat } from "./redux/actions";
+import MyChat from "./components";
+import "./app.css";
 function App() {
-	return <div>my chat</div>;
+	const dispatch = useDispatch();
+
+	useEffect(() => {
+		dispatch(login());
+		dispatch(fetchListChat());
+	}, []);
+
+	return (
+		<>
+			<MyChat />
+		</>
+	);
 }
 
 export default App;

@@ -1,6 +1,13 @@
 import React from "react";
-
-function Principal() {
-	return <div></div>;
+import { MyChatWrapper } from "./styled";
+import SideBar from "./SideBar";
+import ChatContent from "./ChatContent";
+function MyChat() {
+	return (
+		<MyChatWrapper>
+			<SideBar />
+			<ChatContent />
+		</MyChatWrapper>
+	);
 }
-export default Principal;
+export default MyChat;
