@@ -13,6 +13,11 @@ export const SideBarHeaderWrapper = styled.div`
 	align-items: center;
 	justify-content: space-around;
 	padding: 15px 0px;
+	img.profile__photo {
+		width: 42px;
+		height: 42px;
+		border-radius: 50px;
+	}
 	.avatar__account {
 		svg {
 			color: lightgrey;

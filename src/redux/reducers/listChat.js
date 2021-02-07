@@ -1,18 +1,19 @@
 import * as types from "../actions/types";
 
 const initialstate = {
-	list: []
+	chats: []
 };
 
-export default function chatReducer(state = initialstate, action) {
+const chatReducer = (state = initialstate, action) => {
 	switch (action.type) {
 		case types.FETCH_LIST_CHAT:
-			console.log("hello");
+			console.log(action.payload);
 			return {
 				...state,
-				list: state.list
+				chats: action.payload
 			};
 		default:
 			return state;
 	}
-}
+};
+export default chatReducer;

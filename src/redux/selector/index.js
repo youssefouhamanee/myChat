@@ -2,11 +2,11 @@ import { createSelector } from "reselect";
 
 export const selectorUser = createSelector(
 	(state) => state.user,
-	(state) => state.listChat,
+	(state) => state.chats,
 	(userState, listChatState) => {
 		return {
-			user: userState?.login,
-			list: listChatState
+			user: userState.user,
+			chats: listChatState.chats
 		};
 	}
 );

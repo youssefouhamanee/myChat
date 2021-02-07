@@ -19,22 +19,25 @@ export const ChatContentWrapper = styled.div`
 		}
 	}
 	.chat__conversation {
-		height: 100vh;
+		height: 1000px;
+		overflow: scroll;
 	}
 	.chat__footer {
 		display: flex;
 		padding: 20px;
 		background-color: #f5f5f5;
+		border-top: 1px solid gainsboro;
 		flex-direction: row;
 		align-items: center;
 		input {
 			width: 100%;
-			border: none;
-			border-radius: none;
+			border: 1px solid gainsboro;
+			border-radius: 50px;
 			padding: 15px 10px;
+			background-color: white;
 		}
 		.icon__send {
-			margin-left: 10px;
+			margin-left: 25px;
 			cursor: pointer;
 			svg {
 				width: 30px;

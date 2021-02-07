@@ -1,23 +1,24 @@
-import React from "react";
-import { AccountCircle } from "@material-ui/icons";
+import React, { useEffect } from "react";
+import { Avatar } from "@material-ui/core";
 import data from "../../data.json";
+import { useSelector } from "react-redux";
+import { selectorUser } from "../../redux/selector";
+
 const ItemChat = () => {
+	const { chats } = useSelector(selectorUser);
+	console.log(chats);
 	return (
 		<>
-			{data?.messages.map((m) => (
+			{chats.map((m) => (
 				<div className="chat__content">
 					<div className="chat__avatar">
-						{m.avatar ? (
-							<img src={m.avatar} alt="avatar user" />
-						) : (
-							<AccountCircle />
-						)}
+						<Avatar />
 					</div>
 					<div className="chat__details">
 						<div className="chat__details_header">
-							<strong>{m.name_contact}</strong> <small>{m.time}</small>
+							<strong>{m.data.chatName}</strong> <small>timestamp</small>
 						</div>
-						<div className="chat__details_body">{m.message}</div>
+						<div className="chat__details_body">messasge ...</div>
 					</div>
 				</div>
 			))}
