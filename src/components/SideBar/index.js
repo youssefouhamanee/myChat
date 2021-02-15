@@ -4,14 +4,14 @@ import SideBarChats from "./SideBarChats";
 import SideBarHeader from "./SideBarHeader";
 import { SideBarWrapper } from "./styled";
 import db, { auth } from "../../firebase";
-import { setChats } from "../../redux/actions";
+import { fetchListChats } from "../../redux/actions";
 
 const SideBar = () => {
 	const dispatch = useDispatch();
 	useEffect(() => {
 		db.collection("chats").onSnapshot((snapshot) =>
 			dispatch(
-				setChats(
+				fetchListChats(
 					snapshot.docs.map((doc) => ({
 						id: doc.id,
 						data: doc.data()

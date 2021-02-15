@@ -5,6 +5,7 @@ export const ChatContentWrapper = styled.div`
 	flex: 0.75;
 	flex-direction: column;
 	height: 100vh;
+
 	.chat__header {
 		background-color: #f5f5f5;
 		display: flex;
@@ -17,10 +18,16 @@ export const ChatContentWrapper = styled.div`
 			color: gray;
 			font-size: 14px;
 		}
+		strong {
+			svg {
+				cursor: pointer;
+			}
+		}
 	}
 	.chat__conversation {
 		height: 1000px;
 		overflow: scroll;
+		padding: 10px;
 	}
 	.chat__footer {
 		display: flex;
@@ -35,6 +42,7 @@ export const ChatContentWrapper = styled.div`
 			border-radius: 50px;
 			padding: 15px 10px;
 			background-color: white;
+			outline: 0;
 		}
 		.icon__send {
 			margin-left: 25px;
@@ -45,5 +53,28 @@ export const ChatContentWrapper = styled.div`
 				color: lightskyblue;
 			}
 		}
+	}
+`;
+
+export const MessageWrapper = styled.div`
+	display: flex;
+	width: fit-content;
+	align-items: center;
+	justify-content: space-between;
+	position: relative;
+	margin: 15px 0px;
+	.message__content {
+		background-color: skyblue;
+		padding: 5px 15px;
+		border-radius: 50px;
+		color: white;
+		margin-left: 5px;
+	}
+	.message__time {
+		position: absolute;
+		right: 0;
+		bottom: -12px;
+		color: gray;
+		font-size: 12px;
 	}
 `;

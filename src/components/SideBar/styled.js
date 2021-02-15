@@ -58,6 +58,10 @@ export const ItemChatWrapper = styled.div`
 		justify-content: space-around;
 		align-items: center;
 		cursor: pointer;
+		&.active_chat {
+			background-color: lightskyblue;
+			color: white;
+		}
 		&:hover {
 			background-color: lightskyblue;
 			color: white;
@@ -86,6 +90,9 @@ export const ItemChatWrapper = styled.div`
 			.chat__details_header {
 				font-size: 15px;
 				font-weight: 500;
+				strong {
+					width: 500px;
+				}
 				small {
 					position: absolute;
 					right: 0;
