@@ -3,38 +3,49 @@ import { Avatar } from "@material-ui/core";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 import { selectorUser } from "../../redux/selector";
-import { setChat } from "../../redux/actions";
+import { setChat, setChatInfo } from "../../redux/actions";
+import db from "../../firebase";
 
-const ItemChat = () => {
-	const { chats, chatId } = useSelector(selectorUser);
+const ItemChat = ({ id, chatName }) => {
+	const { chatId, chatInfo } = useSelector(selectorUser);
 	const dispatch = useDispatch();
-	console.log(chats);
+	useEffect(() => {
+		db.collection("chats")
+			.doc(id)
+			.collection("messages")
+			.orderBy("timestamp", "desc")
+			.onSnapshot((snapshot) =>
+				dispatch(setChatInfo(snapshot.docs.map((doc) => doc.data())))
+			);
+	}, [id]);
+	console.log(chatInfo);
 	return (
 		<>
-			{chats.map((m) => (
-				<div
-					className={`chat__content ${m.id === chatId && "active_chat"}`}
-					onClick={() => {
-						dispatch(
-							setChat({
-								id: m.id,
-								name: m.data.chatName
-							})
-						);
-					}}
-					key={m.id}
-				>
-					<div className="chat__avatar">
-						<Avatar />
-					</div>
-					<div className="chat__details">
-						<div className="chat__details_header">
-							<strong>{m.data.chatName}</strong> <small>timestamp</small>
-						</div>
-						<div className="chat__details_body">messasge ...</div>
-					</div>
+			<div
+				className={`chat__content ${id === chatId && "active_chat"}`}
+				onClick={() => {
+					dispatch(
+						setChat({
+							id: id,
+							name: chatName
+						})
+					);
+				}}
+				key={id}
+			>
+				<div className="chat__avatar">
+					<Avatar src={chatInfo[0]?.photo} />
 				</div>
-			))}
+				<div className="chat__details">
+					<div className="chat__details_header">
+						<strong>{chatName}</strong>{" "}
+						<small>
+							{chatInfo[0]?.timestamp?.toDate().toLocaleTimeString()}
+						</small>
+					</div>
+					<div className="chat__details_body">{chatInfo[0]?.message}</div>
+				</div>
+			</div>
 		</>
 	);
 };

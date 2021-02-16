@@ -22,7 +22,7 @@ export const selectorUser = createSelector(
 			// messages: listChatState?.chats.map(
 			// 	(c) => c.data.id === listChatState.chatId && messageState.messages
 			// ),
-
+			chatInfo: listChatState.chatInfo,
 			messages: messageState.messages,
 			input: inputState.input
 		};

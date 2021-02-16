@@ -63,6 +63,20 @@ export const MessageWrapper = styled.div`
 	justify-content: space-between;
 	position: relative;
 	margin: 15px 0px;
+	&.sender__message {
+		margin-left: auto;
+		.message__content {
+			background-color: blue;
+			padding: 5px 15px;
+			border-radius: 50px;
+			color: white;
+			margin-left: 5px;
+		}
+		.avatar__logo {
+			order: 1;
+			margin-left: 5px;
+		}
+	}
 	.message__content {
 		background-color: skyblue;
 		padding: 5px 15px;
